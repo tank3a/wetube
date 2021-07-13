@@ -7,7 +7,7 @@
     "url": "git+https://github.com/tank3a/wetube.git"
   },
   "scripts": {
-    "dev": "nodemon --exec babel-node index.js"
+    "dev": "nodemon --exec babel-node src/server.js"
   },
   "author": "Jongwon, Kim",
   "license": "MIT",
@@ -16,7 +16,8 @@
   },
   "homepage": "https://github.com/tank3a/wetube#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",
