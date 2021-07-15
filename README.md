@@ -1,12 +1,16 @@
 # Introduction of Youtube - Cloning
 
-/ -> Home
+/ -> Recommended
 /join -> Join
 /login -> Login
 /search -> Search
 
-/users/edit ->
-/users/delete -> Delete user
-/videos/watch -> Watch video
-/videos/edit -> Edit video
-/videos/delete -> Delete video
+/users/:id -> See User
+/users/edit -> Edit My Profile
+/users/delete -> Delete My Profile
+/users/logout -> Logout
+
+/videos/:id -> See video
+/videos/:id/edit -> Edit video
+/videos/:id/delete -> Delete video
+/videos/upload -> Upload Video

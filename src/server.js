@@ -10,10 +10,6 @@ const app = express();
 const logger = morgan("dev");
 app.use(logger);
 
-
-
-
-
 app.use("/", globalRouter);
 app.use("/videos", videoRouter);
 app.use("/users", userRouter);
