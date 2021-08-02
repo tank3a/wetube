@@ -4,7 +4,6 @@ export const home = async(req, res) => {
     try {
         const videos = await Video.find({}).sort({createdAt:"desc"});
         return res.render("home", {pageTitle: "Home", videos});
-        console.log("hello");
     } catch {
         return res.render();
     }
