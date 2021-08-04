@@ -20,7 +20,7 @@ app.use(session({
     saveUninitialized: false,
     store:MongoStore.create({mongoUrl:process.env.DB_URL}),
     cookie: {
-        maxAge: 20000,
+        maxAge: 3600000,
     }
 }));
 app.use(localsMiddleware);
