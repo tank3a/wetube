@@ -116,7 +116,30 @@ export const finishGithubLogin = async (req, res) => {
         return res.redirect("/login");
     }
 };
-export const edit = (req, res) => res.send("Edit User");
+export const getEdit = (req, res) => {
+    return res.render("edit-profile", {pageTitle:"Edit Profile"});
+}
+export const postEdit = async (req, res) => {
+    const {
+        session: {
+            user: {_id},
+        },
+        body: {username, name, location},
+    }=req;
+    try {
+        const updatedUser = await User.findByIdAndUpdate(_id, {
+        username, name, location,
+        },
+        {new: true});
+        req.session.user = updatedUser;
+        return res.redirect("/users/edit");
+    } catch {
+        if(await User.exists({username})) {
+            return res.status(400).render("edit-profile", {pageTitle:"Join", errorMessage:"Sorry, this username exists"});
+        }
+    }
+}
+
 export const logout = (req, res) => {
     req.session.destroy();
     return res.redirect("/");

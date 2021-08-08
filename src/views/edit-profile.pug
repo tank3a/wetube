@@ -1,0 +1,10 @@
+extends base
+
+block content 
+    if(errorMessage)
+        span=errorMessage
+    form(method="POST")
+        input(type="text", required, name="username", placeholder="Username", value=loggedInUser.username)
+        input(type="text", required, name="name", placeholder="Name", value=loggedInUser.name)
+        input(type="text", name="location", placeholder="location", value=loggedInUser.location)
+        input(type="submit", value="Update Profile")
