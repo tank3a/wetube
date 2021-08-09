@@ -2,11 +2,11 @@ import User from "../models/User";
 import bcrypt from "bcrypt";
 import fetch from "node-fetch";
 
-export const getJoin = (req, res) => res.render("join", {pageTitle:"Create Account"});
+export const getJoin = (req, res) => res.render("users/join", {pageTitle:"Create Account"});
 export const postJoin = async (req, res) => {
     const {name, username, email, password, password2, location } = req.body;
     if(password !== password2) {
-        return res.status(400).render("join", {pageTitle:"Join", errorMessage:"Password confirmation does not match"});
+        return res.status(400).render("users/join", {pageTitle:"Join", errorMessage:"Password confirmation does not match"});
     }
     try {
         await User.create({
@@ -16,13 +16,13 @@ export const postJoin = async (req, res) => {
             password,
             location 
         });
-        return res.redirect("/login");
+        return res.redirect("login");
     } catch(error) {
         if(await User.exists({username})) {
-            return res.status(400).render("join", {pageTitle:"Join", errorMessage:"Sorry, this username exists"});
+            return res.status(400).render("users/join", {pageTitle:"Join", errorMessage:"Sorry, this username exists"});
         }
         else if(await User.exists({email})) {
-            return res.status(400).render("join", {pageTitle:"Join", errorMessage:"This Email is already taken"});
+            return res.status(400).render("users/join", {pageTitle:"Join", errorMessage:"This Email is already taken"});
         }
         else {
             return res.status(404).render("404", {pageTitle:"Cannot Join"});
@@ -30,17 +30,17 @@ export const postJoin = async (req, res) => {
     }
 }
 
-export const getLogin = (req, res) => res.render("login", {pageTitle:"Login"});
+export const getLogin = (req, res) => res.render("users/login", {pageTitle:"Login"});
 export const postLogin = async (req, res) => {
     const {email, password} = req.body;
     const pageTitle = "Login";
     const user = await User.findOne({email});
     if(!user) {
-        return res.status(400).render("login", {pageTitle, errorMessage:"An account with this email does not exist"});
+        return res.status(400).render("users/login", {pageTitle, errorMessage:"An account with this email does not exist"});
     }
     const success = await bcrypt.compare(password, user.password);
     if(!success) {
-        return res.status(400).render("login", {pageTitle, errorMessage:"Wrong password"});
+        return res.status(400).render("users/login", {pageTitle, errorMessage:"Wrong password"});
     }
     req.session.loggedIn = true;
     req.session.user = user;
@@ -94,7 +94,7 @@ export const finishGithubLogin = async (req, res) => {
             (email) => email.primary === true && email.verified === true
         );
         if(!emailObj) {
-            return res.redirect("/login");
+            return res.redirect("users/login");
         }
         let user = await User.findOne({email: emailObj.email});
         if(!user) {
@@ -103,7 +103,7 @@ export const finishGithubLogin = async (req, res) => {
                 avatarUrl: userData.avatar_url,
                 username: userData.login,
                 email: emailObj.email,
-                password: "",
+                password: process.env.SOCIAL_PASSWORD,
                 socialLogin: true,
                 location: userData.location,
             });
@@ -117,7 +117,7 @@ export const finishGithubLogin = async (req, res) => {
     }
 };
 export const getEdit = (req, res) => {
-    return res.render("edit-profile", {pageTitle:"Edit Profile"});
+    return res.render("users/edit_profile", {pageTitle:"Edit Profile"});
 }
 export const postEdit = async (req, res) => {
     const {
@@ -132,10 +132,10 @@ export const postEdit = async (req, res) => {
         },
         {new: true});
         req.session.user = updatedUser;
-        return res.redirect("/users/edit");
+        return res.redirect("edit");
     } catch {
         if(await User.exists({username})) {
-            return res.status(400).render("edit-profile", {pageTitle:"Join", errorMessage:"Sorry, this username exists"});
+            return res.status(400).render("users/edit_profile", {pageTitle:"Join", errorMessage:"Sorry, this username exists"});
         }
     }
 }
@@ -144,4 +144,35 @@ export const logout = (req, res) => {
     req.session.destroy();
     return res.redirect("/");
 }
+
+export const getChangePassword = (req, res) => {
+    return res.render("users/change_password", {pageTitle:"Change Password"});
+}
+export const postChangePassword = async (req, res) => {
+    const {
+        session: {
+            user: {_id},
+        },
+        body: {
+            old_password,
+            new_password,
+            confirm_password,
+        }
+    } = req;
+    const user = await User.findById(_id);
+    const success = await bcrypt.compare(old_password, user.password);
+    if(!success) {
+        return res.status(400).render("users/change_password", {pageTitle:"Change Password", errorMessage:"The current password is incorrect"});
+    }
+    if(new_password !== confirm_password) {
+        return res.status(400).render("users/change_password", {pageTitle:"Change Password", errorMessage:"Password confirmation does not match"});
+    }
+    if(old_password === new_password) {
+        return res.status(400).render("users/change_password", {pageTitle:"Change Password", errorMessage:"The new password is same to the old password"})
+    }
+    user.password = new_password;
+    user.save();
+    return res.redirect("logout");
+}
 export const see = (req, res) => res.send("See user");
+
