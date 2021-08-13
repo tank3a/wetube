@@ -2,11 +2,13 @@ doctype html
 html(lang="ko")
     head
         title #{pageTitle} | #{siteName}
+        meta(charset="utf-8")
+        meta(name="description", content="Cloning Youtube Webpage using Node.js by Jongwon")
+        meta(name="author", content="Jongwon, Kim")
         link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer")
         link(rel="stylesheet", href="/assets/css/styles.css")
     body
         include partials/header
         main
             block content
-        include partials/footer
     script(src="/assets/js/main.js")

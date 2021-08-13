@@ -1,18 +1,21 @@
 extends ../base
 
 block content 
-    if(errorMessage)
-        span=errorMessage
-    form(method="POST")
-        input(type="email", required, name="email", placeholder="Email")
-        input(type="text", required, name="username", placeholder="Username")
-        input(type="password", required, name="password", placeholder="Password")
-        input(type="password", required, name="password2", placeholder="Confirm Password")
-        input(type="text", required, name="name", placeholder="Name")
-        input(type="text", name="location", placeholder="location")
-        input(type="submit", value="Join")
-
-    hr
-    div 
-        span Already have an account?
-        a(href="/login") Login Now
+    div.main__default
+        if(errorMessage)
+            span=errorMessage
+        div.join__logo
+            i.fab.fa-youtube.fa-5x
+            h2 Sign Up to Join!
+        form(method="POST")
+            input(type="email", required, name="email", placeholder="Email")
+            input(type="text", required, name="username", placeholder="Username")
+            input(type="password", required, name="password", placeholder="Password")
+            input(type="password", required, name="password2", placeholder="Confirm Password")
+            input(type="text", required, name="name", placeholder="Name")
+            input(type="text", name="location", placeholder="location")
+            input(type="submit", value="Join")
+            
+        div.join__login 
+            a(href="/login")
+                h4 Already have an account? Login now

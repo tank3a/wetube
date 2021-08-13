@@ -1,0 +1,15 @@
+.error_404 {
+    margin-top: 30vh;
+    display: flex;
+    gap: 30px 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h4 {
+        color: $grey;
+        background-color: $black;
+        padding: 5px;
+        border-radius: 5px;
+    }
+}

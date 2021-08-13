@@ -1,5 +1,16 @@
 $red: #ff0000;
 $grey: #f2f2f2;
 $black: #030303;
-$videobg: #f9f9f9;
+$greybg: #f9f9f9;
 $bg: white;
+$border: 1px solid #aaaaaa;
+$ghblack: #24292e;
+
+@keyframes Visible {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 0.8;
+    }
+}

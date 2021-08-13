@@ -1,24 +1,38 @@
-header 
-    a(href="/")
-        i.fab.fa-youtube
-    nav 
-        ul 
-            if loggedIn 
-                li 
-                    a(href="/videos/upload") Upload Video
-                li
-                    a(href="/users/edit") Edit Profile 
-                li 
-                    a(href=`users/${loggedInUser._id}`) My Profile
-                li
-                    a(href="/users/logout") Log Out
+header
+    div.left_nav_wrapper
+        div.sidebar
+            a
+                i.fas.fa-bars.fa-lg
 
+        div.main_logo
+            a(href="/")
+                i.fab.fa-youtube.fa-2x
+                h3 Premium
+
+    include search
+
+    div.right_nav_wrapper
+        div.upload_logo
+            a(href="/videos/upload")
+                i.fas.fa-upload.fa-2x
+                span Upload
+
+        i.fas.fa-bell.fa-2x
+        i.fas.fa-th.fa-2x
+        div.user_box
+            if loggedIn
+                h4=loggedInUser.name
+                i.fas.fa-user-circle.fa-2x
+                div.loggedInMenu
+                    a(href=`/users/${loggedInUser._id}`)
+                        h4 My Profile
+                    a(href=`/users/edit`)
+                        h4 Edit Profile 
+                    a(href="/users/logout")
+                        h4 Logout
+            
             else
-                li 
-                    a(href="/join") Join
-                li 
-                    a(href="/login") Login
-            li
-                a(href="/") Home
-            li 
-                a(href="/search") Search
+                a(href="/login")
+                    h4 Login
+                    i.fas.fa-user-circle.fa-2x
+

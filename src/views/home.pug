@@ -1,8 +1,9 @@
 extends base
 include mixins/video
 
-block content  
-    each info in videos 
-        +video(info)
-    else 
-        h4 Sorry, Nothing Found
+block content
+    div.videos_collection
+        each info in videos 
+            +video(info)
+        else 
+            h3 Sorry, Nothing Found

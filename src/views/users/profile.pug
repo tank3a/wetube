@@ -1,8 +1,14 @@
 extends ../base
 include ../mixins/video
 
-block content  
-    each video in user.videos
-        +video(video)
-    else 
-        h4 Sorry, Nothing Found
+block content
+    div.main__default.profile
+        a(href=`/users/${user._id}`)
+            div.description__avatar
+                img(src=`/${user.avatarUrl}`)
+        h2=user.name
+    div.videos_collection
+        each video in user.videos
+            +video(video)
+        else 
+            h4 Sorry, Nothing Found

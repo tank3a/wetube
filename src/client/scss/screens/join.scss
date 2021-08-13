@@ -1,0 +1,15 @@
+.join__logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    i {
+        color: $red;
+    }
+}
+.join__login {
+    margin-top: 20px;
+    h4 {
+        text-decoration: underline;
+    }
+}

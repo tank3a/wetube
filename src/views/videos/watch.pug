@@ -1,19 +1,23 @@
 extends ../base
 
-block content 
-    video(src="/" + video.fileUrl, controls)
-    div
-        p=video.description
-        small=video.createdAt
-    div
-        small Created by 
-            a(href=`/users/${video.owner._id}`) #{video.owner.name} 
-    div 
-        ul 
-            each hashtag in video.hashtags
-                li=hashtag 
-    
-    if String(video.owner.id) === String(loggedInUser._id)
-        a(href=`${video.id}/edit`) Edit Video &rarr; 
-        br
-        a(href=`${video.id}/delete`) Delete Video &rarr; 
+block content
+    div.video
+        div.video_video
+            video(src="/" + video.fileUrl, controls)
+        div.video_content
+            div.video_content__titlepart
+                each hashtag in video.hashtags
+                        span #{hashtag} 
+                h2=video.title
+                small #{video.meta.views} Views • #{video.createdAt.toDateString()}
+            
+            div.video_content__creatorpart
+                include ../partials/avatar
+                h2 
+                    a(href=`/users/${video.owner._id}`) #{video.owner.name} 
+            p=video.description
+
+        if String(video.owner.id) === String(loggedInUser._id)
+            div.video_creater_editpart
+                a(href=`${video.id}/edit`) Edit Video
+                a(href=`${video.id}/delete`) Delete Video

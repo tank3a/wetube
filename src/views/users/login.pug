@@ -1,17 +1,23 @@
 extends ../base
 
-block content 
-    if(errorMessage)
-        span=errorMessage
-    form(method="POST")
-        input(type="email", required, name="email", placeholder="Email")
-        input(type="password", required, name="password", placeholder="Password")
-        input(type="submit", value="Login")
-        br
-        a(href="/users/github/start") Continue with Github &rarr;
+block content
+    div.main__default
+        if(errorMessage)
+            h4=errorMessage
+        div.login__logo
+            i.fab.fa-youtube.fa-5x
+            h2 Sign in to Wetube!
+        form(method="POST")
+            input(type="email", required, name="email", placeholder="Email")
+            input(type="password", required, name="password", placeholder="Password")
+            input(type="submit", value="Login")
+        
+        div.social_login
+            div.social_login_github
+                a(href="/users/github/start")
+                    i.fab.fa-github.fa-lg
+                    span Continue with Github
 
-
-    hr
-    div 
-        span Don't have an account?
-        a(href="/login") Create Now
+        div.login__create_account 
+            a(href="/join")
+                h4 Don't have an account? Create Now

@@ -1,0 +1,99 @@
+header {
+    position: absolute;
+    top:0;
+    left: 0;
+    box-sizing: border-box;
+    height: 55px;
+    width: 100vw;
+    padding: 0px 25px;
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    i {
+        margin-right: 20px;
+    }
+    .left_nav_wrapper,
+    .right_nav_wrapper {
+        display: flex;
+        align-items: center;
+    }
+    .left_nav_wrapper {
+        justify-content: flex-start;
+    }
+    .right_nav_wrapper {
+        justify-content: flex-end;
+    }
+    .main_logo {
+        a {
+            display: flex;
+            align-items: center;
+            i {
+                margin-right: 5px;
+                color: $red;
+            }
+        }
+    }
+    .upload_logo {
+        position: relative;
+        span {
+            position: absolute;
+            display: block;
+            background-color: #828282;
+            color: black;
+            padding: 3px 8px;
+            border-radius: 2px;
+            visibility: hidden;
+            bottom:-25px;
+        }
+        &:hover {
+            span {
+                visibility: unset;
+                animation: Visible 0.3s ease-out forwards;
+            }
+        }
+    }
+    .user_box {
+        padding: 5px;
+        border: $border;
+        border-radius: 10px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0 5px;
+        i {
+            margin-right: 0;
+        }
+        a {
+            display: flex;
+            align-items: center;
+            gap: 0 5px
+        }
+        
+        .loggedInMenu {
+            position: fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: $greybg;
+            box-shadow: 1px 0px 0 $grey, 0 -1px 0 $grey, 0 1px 0 $grey, -1px 0 0 $grey;
+            top: 65px;
+            right: 20px;
+            z-index: 10;
+            a {
+                width: 210px;
+                height: 30px;
+                border-bottom: $border;
+                padding: 12px;
+            }
+            a:last-child {
+                border: none;
+            }
+            h4 {
+                display: block;
+            }
+        }
+    }
+}

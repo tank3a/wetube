@@ -85,7 +85,7 @@ export const deleteVideo = async (req, res) => {
         params: { id },
         session: { user: {_id}},
     } = req;
-    const video = await Video.exists({_id: id});
+    const video = await Video.findById(id);
     console.log(video);
     if(String(video.owner) !== String(_id)) {
         return res.status(403).redirect("/");
