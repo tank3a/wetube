@@ -4,20 +4,28 @@ block content
     div.video
         div.video_video
             video(src="/" + video.fileUrl, controls)
-        div.video_content
-            div.video_content__titlepart
-                each hashtag in video.hashtags
-                        span #{hashtag} 
-                h2=video.title
-                small #{video.meta.views} Views • #{video.createdAt.toDateString()}
-            
-            div.video_content__creatorpart
-                include ../partials/avatar
-                h2 
-                    a(href=`/users/${video.owner._id}`) #{video.owner.name} 
-            p=video.description
+            button#play Play 
+            button#mute Mute
+            spna#time 00:00/00:00
+            input(type="range", step="0.1", min=0, max=1, value=1)#volume
+        //-
+            div.video_content
+                div.video_content__titlepart
+                    each hashtag in video.hashtags
+                            span #{hashtag} 
+                    h2=video.title
+                    small #{video.meta.views} Views • #{video.createdAt.toDateString()}
+                
+                div.video_content__creatorpart
+                    include ../partials/avatar
+                    h2 
+                        a(href=`/users/${video.owner._id}`) #{video.owner.name} 
+                p=video.description
 
-        if String(video.owner.id) === String(loggedInUser._id)
-            div.video_creater_editpart
-                a(href=`${video.id}/edit`) Edit Video
-                a(href=`${video.id}/delete`) Delete Video
+            if String(video.owner.id) === String(loggedInUser._id)
+                div.video_creater_editpart
+                    a(href=`${video.id}/edit`) Edit Video
+                    a(href=`${video.id}/delete`) Delete Video
+
+block scripts 
+    script(src="/assets/js/videoPlayer.js")

@@ -1,10 +1,10 @@
-extends base
-include mixins/video
+extends ../base
+include ../mixins/video
 
 block content
     div.videos_collection
         each info in videos 
             +video(info)
         else
-            div.videos_none
+            div.videos_none 
                 h3 Sorry, Nothing Found
