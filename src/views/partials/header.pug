@@ -20,20 +20,20 @@ header
         i.fas.fa-bell.fa-2x
         i.fas.fa-th.fa-2x
         div.user_box
-            if loggedIn
-                div.user_box__logo
+            div.user_box__logo
+                if loggedIn
                     h4=loggedInUser.name
                     i.fas.fa-user-circle.fa-2x
-                div.user_box__loggedInMenu
-                    a(href=`/users/${loggedInUser._id}`)
-                        h4 My Profile
-                    a(href=`/users/edit`)
-                        h4 Edit Profile 
-                    a(href="/users/logout")
-                        h4 Logout
-            
-            else
-                a(href="/login")
-                    h4 Login
-                    i.fas.fa-user-circle.fa-2x
+                    div.user_box__loggedInMenu
+                        a(href=`/users/${loggedInUser._id}`)
+                            h4 My Profile
+                        a(href=`/users/edit`)
+                            h4 Edit Profile 
+                        a(href="/users/logout")
+                            h4 Logout
+                
+                else
+                    a(href="/login")
+                        h4 Login
+                        i.fas.fa-user-circle.fa-2x
 

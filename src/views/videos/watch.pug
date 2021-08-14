@@ -1,39 +1,47 @@
 extends ../base
 
 block content
-    div.video
+    div.watch
         div.video_video
             video(src="/" + video.fileUrl)
-            button#play Play 
-            button#mute Mute
-            input(type="range", step="0.1", min=0, max=1, value=1)#volume
-            div 
-                span#currentTime 0:00
-                span  / 
-                span#totalTime 00:00
-            div 
-                input(type="range", step=0.1, min=0, value=0)#timeLine
-            div 
-                button#fullScreen Enter Full Screen
+            div.video_video__controls
+                div.video_video__controls__timeline
+                    input(type="range", step=0.1, min=0, value=0)#timeLine
+                div.video_video__controls__buttons
+                    div.video_video__controls__buttons__left
+                        div.video_video__controls__play
+                            button#play
+                                i.fas.fa-play
+                        div.video_video__controls__volume
+                            button#mute
+                                i.fas.fa-volume-up
+                            input(type="range", step="1", min=0, max=1, value=1)#volume
+                        div.video_video__controls__time 
+                            span#currentTime 0:00
+                            span  / 
+                            span#totalTime 00:00
+                    div.video_video__controls__buttons__right
+                        div.video_video__controls__fullscreen
+                            button#fullScreen
+                                i.fas.fa-expand-alt
 
-        //-
-            div.video_content
-                div.video_content__titlepart
-                    each hashtag in video.hashtags
-                            span #{hashtag} 
-                    h2=video.title
-                    small #{video.meta.views} Views • #{video.createdAt.toDateString()}
-                
-                div.video_content__creatorpart
-                    include ../partials/avatar
-                    h2 
-                        a(href=`/users/${video.owner._id}`) #{video.owner.name} 
-                p=video.description
+        div.video_content
+            div.video_content__titlepart
+                each hashtag in video.hashtags
+                        span #{hashtag} 
+                h2=video.title
+                small #{video.meta.views} Views • #{video.createdAt.toDateString()}
+            
+            div.video_content__creatorpart
+                include ../partials/avatar
+                h2 
+                    a(href=`/users/${video.owner._id}`) #{video.owner.name} 
+            p=video.description
 
-            if String(video.owner.id) === String(loggedInUser._id)
-                div.video_creater_editpart
-                    a(href=`${video.id}/edit`) Edit Video
-                    a(href=`${video.id}/delete`) Delete Video
+        if String(video.owner.id) === String(loggedInUser._id)
+            div.video_creater_editpart
+                a(href=`${video.id}/edit`) Edit Video
+                a(href=`${video.id}/delete`) Delete Video
 
 block scripts 
     script(src="/assets/js/videoPlayer.js")
