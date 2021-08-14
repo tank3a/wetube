@@ -4,7 +4,8 @@ const path = require("path");
 module.exports = {
     entry: {
         main: "./src/client/js/main.js",
-        videoPlayer: "./src/client/js/videoPlayer.js"
+        videoPlayer: "./src/client/js/videoPlayer.js",
+        profileHeader: "./src/client/js/profileHeader.js"
     },
     mode:"development",
     watch:true,

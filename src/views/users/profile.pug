@@ -7,8 +7,9 @@ block content
             div.description__avatar
                 img(src=`/${user.avatarUrl}`)
         h2=user.name
-    div.videos_collection
-        each video in user.videos
-            +video(video)
-        else 
-            h4 Sorry, Nothing Found
+    div.main__videoCollection
+        div.videos_collection
+            each video in user.videos
+                +video(video)
+            else 
+                h4 Sorry, Nothing Found

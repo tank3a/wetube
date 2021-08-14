@@ -21,9 +21,10 @@ header
         i.fas.fa-th.fa-2x
         div.user_box
             if loggedIn
-                h4=loggedInUser.name
-                i.fas.fa-user-circle.fa-2x
-                div.loggedInMenu
+                div.user_box__logo
+                    h4=loggedInUser.name
+                    i.fas.fa-user-circle.fa-2x
+                div.user_box__loggedInMenu
                     a(href=`/users/${loggedInUser._id}`)
                         h4 My Profile
                     a(href=`/users/edit`)
