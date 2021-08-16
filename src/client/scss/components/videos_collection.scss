@@ -1,7 +1,9 @@
 .videos_collection {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 40px 20px;
+    padding: 20px;
     .videos_none {
         margin-top: 30vh;
     }

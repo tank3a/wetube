@@ -1,11 +1,14 @@
 mixin video(video)
     div.video_preview
-        a(href=`/videos/${video.id}`)
-            video(src="/" + video.fileUrl)
+        div.video_preview__video
+            a(href=`/videos/${video.id}`)
+                div.video_preview__thumb
         div.video_preview__description
             include ../partials/avatar
             a(href=`/videos/${video.id}`)
                 div.video_preview__description__content
                     h4 #{video.title}
-                    small #{video.owner.name}
-                    small #{video.meta.views} Views • #{video.createdAt.toDateString()}
+                    div
+                        small #{video.owner.name}
+                    div
+                        small #{video.meta.views} Views • #{video.createdAt.toDateString()}

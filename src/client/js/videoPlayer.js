@@ -89,6 +89,9 @@ const handleLoadedMetaData = () => {
 const handleTimeUpdate = (event) => {
     currentTime.innerText = videoTimeControl(Math.floor(video.currentTime));
     timeLine.value = Math.floor(video.currentTime);
+    if(video.currentTime === video.duration) {
+        playBtnIcon.className = "fas fa-play";
+    }
 }
 const handleTimelineChange = (event) => {
     const {
@@ -124,6 +127,12 @@ const handleFullScreen = () => {
         document.exitFullscreen();
     }
 };
+const handleEnded = () => {
+    const { videoid } = videoContainer.dataset;
+    fetch(`/api/videos/${videoid}/views`, {
+        method: "POST",
+    })
+}
 playBtn.addEventListener("click", handlePlayClick);
 muteBtn.addEventListener("click", handleMute);
 volumeRange.addEventListener("input", handleVolumeChange);
@@ -131,6 +140,7 @@ video.addEventListener("loadedmetadata", handleLoadedMetaData);
 video.addEventListener("timeupdate", handleTimeUpdate);
 video.addEventListener("click", handlePlayClick);
 video.addEventListener("dblclick", handleFullScreen);
+video.addEventListener("ended", handleEnded);
 document.addEventListener("keydown", handleKeyDown);
 videoContainer.addEventListener("mousemove", handleMouseMove);
 videoContainer.addEventListener("mouseleave", handleMouseLeave);

@@ -1,7 +1,7 @@
 .search_bar {
     display: flex;
     align-items: center;
-    width: 50%;
+    width: 40%;
     input, button {
         height: 25px;
         box-sizing: content-box;
@@ -23,8 +23,9 @@
         }
     }
 }      
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 735px) {
     header .search_bar {
+        width: 5%;
         visibility: hidden;
     }
 }
