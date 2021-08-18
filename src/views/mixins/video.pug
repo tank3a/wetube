@@ -2,7 +2,8 @@ mixin video(video)
     div.video_preview
         div.video_preview__video
             a(href=`/videos/${video.id}`)
-                div.video_preview__thumb
+                .video_preview__thumb 
+                    img(src=`/${video.thumbUrl}`)
         div.video_preview__description
             include ../partials/avatar
             a(href=`/videos/${video.id}`)

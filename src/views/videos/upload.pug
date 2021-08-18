@@ -2,13 +2,23 @@ extends ../base
 
 block content
     div.main__default
+        div
+            video#preview
+            button#actionBtn Start Recording
         if errorMessage
             div.errorMessage
                 h4=errorMessage
         h2 Upload Video File 
         form(method="POST", enctype="multipart/form-data")
+            label(for="video") Video File
             input(name="video", type="file", accept="video/*", required)
+            label(for="thumb") Thumbnail
+            input(name="thumb", type="file", accept="image/*", required)
+
             input(name="title", placeholder="Title", required, type="text", maxlength=100)
             input(name="description", placeholder="Description", required, type="text", maxlength=140)
             input(name="hashtags", placeholder="Hashtags, seperated by comma", required, type="text")
             input(type="submit", value="Upload Video")
+
+block scripts
+    script(src="/assets/js/recorder.js")

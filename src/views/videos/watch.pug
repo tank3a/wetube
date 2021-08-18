@@ -6,7 +6,7 @@ block content
             video(src="/" + video.fileUrl)
             div.video_video__controls
                 div.video_video__controls__timeline
-                    input(type="range", step=0.1, min=0, value=0)#timeLine
+                    input(type="range", step=1, min=0, value=0)#timeLine
                 div.video_video__controls__buttons
                     div.video_video__controls__buttons__left
                         div.video_video__controls__play
@@ -15,7 +15,7 @@ block content
                         div.video_video__controls__volume
                             button#mute
                                 i.fas.fa-volume-up
-                            input(type="range", step="1", min=0, max=1, value=1)#volume
+                            input(type="range", step="0.1", min=0, max=1, value=1)#volume
                         div.video_video__controls__time 
                             span#currentTime 0:00
                             span  / 

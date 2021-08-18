@@ -14,3 +14,12 @@ $ghblack: #24292e;
         opacity: 0.8;
     }
 }
+@keyframes Invisible {
+    from {
+        visibility: unset;
+    } to {
+        transform: translateY(-50px);
+        visibility: hidden;
+        opacity: 0;
+    }
+}
