@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
     email: {type:String, required:true, unique:true},
-    avatarUrl: {type:String, default:"uploads\\avatars\\39d883d7ac8373f3814b9d64575d87d2"},
+    avatarUrl: {type:String, default:"uploads\\avatars\\default_avatar.png"},
     username: {type:String, required:true, unique:true},
     socialLogin: {type:Boolean, default:false},
     name: {type:String, required:true},
@@ -12,6 +12,10 @@ const userSchema = new mongoose.Schema({
     videos: [{
         type:mongoose.Schema.Types.ObjectId,
         ref:"Video",
+    }],
+    comments: [{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Comment",
     }]
 })
 

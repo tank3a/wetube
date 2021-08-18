@@ -1,5 +1,6 @@
 import express from "express";
 import morgan from "morgan";
+import flash from "express-flash";
 import session from "express-session"
 import MongoStore from "connect-mongo";
 import videoRouter from "./routers/videoRouter";
@@ -24,10 +25,18 @@ app.use(session({
         maxAge: 3600000,
     }
 }));
+
+app.use(flash());
 app.use(localsMiddleware);
 app.use("/", rootRouter);
 app.use("/uploads", express.static("uploads"));
-app.use("/assets", express.static("assets"))
+app.use("/assets", express.static("assets"));
+app.use("/convert", express.static("node_modules/@ffmpeg/core/dist"));
+app.use((req, res, next) => {
+res.header("Cross-Origin-Embedder-Policy", "require-corp");
+res.header("Cross-Origin-Opener-Policy", "same-origin");
+next();
+});
 app.use("/videos", videoRouter);
 app.use("/users", userRouter);
 app.use("/api", apiRouter);
