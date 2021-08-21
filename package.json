@@ -7,8 +7,12 @@
     "url": "git+https://github.com/tank3a/wetube.git"
   },
   "scripts": {
+    "start": "node build/init.js",
+    "build": "npm run build:server && npm run build:assets",
+    "build:server": "babel src -d build",
+    "build:assets": "webpack --mode=production",
     "dev:server": "nodemon",
-    "dev:assets": "webpack"
+    "dev:assets": "webpack --mode=development -w"
   },
   "author": "Jongwon, Kim",
   "license": "MIT",
@@ -34,7 +38,8 @@
     "regenerator-runtime": "^0.13.9"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.6",
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.15.0",
     "@babel/node": "^7.14.7",
     "@babel/preset-env": "^7.14.7",
     "css-loader": "^6.2.0",
