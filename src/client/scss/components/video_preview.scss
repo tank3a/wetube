@@ -49,8 +49,10 @@
         gap: 2px;
         h4 {
             overflow-y: hidden;
-            max-height: 38px;
+            min-height: 20px;
+            max-height: 40px;
             font-size: 18px;
+            line-height: 120%;
         }
     }
 }
