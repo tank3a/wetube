@@ -12,7 +12,8 @@
     "build:server": "babel src -d build",
     "build:assets": "webpack --mode=production",
     "dev:server": "nodemon",
-    "dev:assets": "webpack --mode=development -w"
+    "dev:assets": "webpack --mode=development -w",
+    "heroku-postbuild": "pm run build:server && npm run build:assets"
   },
   "author": "Jongwon, Kim",
   "license": "MIT",
@@ -49,5 +50,6 @@
     "sass-loader": "^12.1.0",
     "webpack": "^5.50.0",
     "webpack-cli": "^4.7.2"
-  }
+  },
+  "heroku-run-build-script": true
 }

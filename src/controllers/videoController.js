@@ -142,7 +142,6 @@ export const createComment = async (req, res) => {
         });
         video.comments.push(comment._id);
         video.save();
-        console.log(video);
         return res.status(201).json({newCommentId: comment._id});
     } catch {
         return res.sendStatus(404);
@@ -161,7 +160,6 @@ export const deleteComment = async (req, res) => {
             await Comment.findByIdAndDelete(id);
             const video = await Video.findById(comment.video);
             video.comments.remove(comment._id);
-            console.log(video);
             video.save();
         }
         return res.sendStatus(200);
