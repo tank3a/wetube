@@ -3,7 +3,7 @@ extends ../base
 block content
     div.watch
         div.video_video(data-videoid=video._id)
-            video(src="/" + video.fileUrl)
+            video(src=video.fileUrl)
             div.video_video__controls
                 div.video_video__controls__timeline
                     input(type="range", step=1, min=0, value=0)#timeLine
@@ -34,8 +34,8 @@ block content
             
             div.video_content__creatorpart
                 include ../partials/avatar
-                h2 
-                    a(href=`/users/${video.owner._id}`) #{video.owner.name} 
+                a(href=`/users/${video.owner._id}`)
+                    h2 #{video.owner.name} 
             p=video.description
 
         if String(video.owner.id) === String(loggedInUser._id)
