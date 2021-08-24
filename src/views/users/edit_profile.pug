@@ -8,7 +8,10 @@ block content
             input(type="text", required, name="username", placeholder="Username", value=loggedInUser.username)
             input(type="text", required, name="name", placeholder="Name", value=loggedInUser.name)
             input(type="text", name="location", placeholder="location", value=loggedInUser.location)
-            img(src=loggedInUser.avatarUrl, crossorigin, width="130px", height="180px")
+            if isHeroku
+                img(src=loggedInUser.avatarUrl, crossorigin, width="130px", height="180px")
+            else 
+                img(src=`/${loggedInUser.avatarUrl}`, crossorigin, width="130px", height="180px")
             label(for="avatar") Select your profile image 
             input(type="file", id="avatar", name="avatar", accept=".jpeg, .png, .jpg")
             input(type="submit", value="Update Profile")
