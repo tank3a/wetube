@@ -1,0 +1,16 @@
+#recorder {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    #preview {
+        width: 780px;
+        height:430px;
+    }
+    #actionBtn {
+        width: 30%;
+        margin: 0 auto;
+        height: 30px;
+        padding: 5px;
+    }
+}

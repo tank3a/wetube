@@ -8,20 +8,22 @@ const deleteComment = (li) => {
 
 
 }
-const addComment = (text, newCommentId) => {
+const addComment = (text, newCommentId, avatarUrl) => {
     const videoComments = document.querySelector(".video_comments ul");
     const newComment = document.createElement("li");
     const span = document.createElement("span");
-    const delBtn = document.createElement("button");
-    delBtn.addEventListener("click", handleDelete);
+    const i = document.createElement("i");
+    const img = document.createElement("img");
+    i.addEventListener("click", handleDelete);
     span.innerText = text;
-    delBtn.className = "video_comments__comment__delete";
-    delBtn.innerText = "Delete";
+    i.className = "far fa-trash-alt fa-lg video_comments__comment__delete";
+    img.src = avatarUrl;
 
     newComment.className = "video_comments__comment";
     newComment.dataset.commentid = newCommentId;
+    newComment.appendChild(img);
     newComment.appendChild(span);
-    newComment.appendChild(delBtn);
+    newComment.appendChild(i);
     videoComments.prepend(newComment);
 
 }
@@ -45,8 +47,8 @@ const handleSubmit = async (event) => {
     textarea.value = "";
     
     if(response.status === 201) {
-        const {newCommentId} = await response.json(); 
-        addComment(text, newCommentId);
+        const {newCommentId, avatarUrl} = await response.json();
+        addComment(text, newCommentId, avatarUrl);
     }
 }
 

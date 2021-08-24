@@ -46,17 +46,17 @@ block content
         if loggedIn
             div.video_comment__add
                 form.video_comment__form#commentForm
-                    textarea(col="30", row="10", placeholder="Write a comment", maxlength="100")
+                    textarea(col="30", row="10", placeholder="Write a comment")
                     button Add
 
         div.video_comments 
             ul 
                 each comment in video.comments.reverse()
                     li.video_comments__comment(data-commentId=comment._id)
-                        img(src="/")
+                        img(src=comment.owner.avatarUrl)
                         span=comment.text
-                        if String(loggedInUser._id) === String(comment.owner)
-                            button.video_comments__comment__delete Delete
+                        if String(loggedInUser._id) === String(comment.owner._id)
+                            i.far.fa-trash-alt.fa-lg.video_comments__comment__delete
 
 block scripts 
     script(src="/assets/js/videoPlayer.js")

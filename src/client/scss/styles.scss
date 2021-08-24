@@ -18,6 +18,7 @@
 @import "./screens/login.scss";
 @import "./screens/join.scss";
 @import "./screens/edit_profile.scss";
+@import "./screens/upload.scss";
 
 //default
 a {
@@ -51,7 +52,7 @@ body {
     color: black;
 }
 main {
-    margin: 70px 20px 10px 20px;
+    margin: 70px 20px 40px 20px;
     .main__default {
         margin-top: 10vh;
         display: flex;

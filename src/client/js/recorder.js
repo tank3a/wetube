@@ -93,7 +93,7 @@ const handleStart = () => {
 }
 const init = async () => {
     stream = await navigator.mediaDevices.getUserMedia({
-        video: {width: 1024, height:576}, audio:true
+        video: true, audio:true
     });
     preview.srcObject = stream;
     preview.play();
