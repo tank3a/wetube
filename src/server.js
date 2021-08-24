@@ -37,6 +37,7 @@ app.use("/convert", express.static("node_modules/@ffmpeg/core/dist"));
 app.use((req, res, next) => {
     res.header("Cross-Origin-Embedder-Policy", "require-corp");
     res.header("Cross-Origin-Opener-Policy", "same-origin");
+    res.header("Access-Control-Allow-Origin", "*");
     next();
 });
 app.use("/videos", videoRouter);

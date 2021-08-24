@@ -2,6 +2,8 @@ import User from "../models/User";
 import bcrypt from "bcrypt";
 import fetch from "node-fetch";
 
+const isHeroku = process.env.NODE_ENV === "production";
+
 export const getJoin = (req, res) => res.render("users/join", {pageTitle:"Create Account"});
 export const postJoin = async (req, res) => {
     const {name, username, email, password, password2, location } = req.body;
@@ -127,8 +129,6 @@ export const postEdit = async (req, res) => {
         body: {username, name, location},
         file,
     }=req;
-    const isHeroku = process.env.NODE_ENV === "production";
-
     try {
         const updatedUser = await User.findByIdAndUpdate(_id, {
             avatarUrl: file ? (isHeroku ? file.location : file.path) : avatarUrl,

@@ -2,6 +2,8 @@ import Video from "../models/Video";
 import Comment from "../models/Comment";
 import User from "../models/User";
 
+const isHeroku = process.env.NODE_ENV === "production";
+
 export const home = async(req, res) => {
     try {
         const videos = await Video.find({}).sort({createdAt:"desc"}).populate("owner");

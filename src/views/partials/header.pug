@@ -23,7 +23,7 @@ header
             div.user_box__logo
                 if loggedIn
                     h4=loggedInUser.name
-                    i.fas.fa-user-circle.fa-2x
+                    img(src=loggedInUser.avatarUrl, crossorigin)
                     div.user_box__loggedInMenu
                         a(href=`/users/${loggedInUser._id}`)
                             h4 My Profile
