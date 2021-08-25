@@ -31,6 +31,9 @@ app.use(session({
 app.use(flash());
 app.use(localsMiddleware);
 app.use("/", rootRouter);
+app.use("/videos", videoRouter);
+app.use("/users", userRouter);
+app.use("/api", apiRouter);
 app.use("/uploads", express.static("uploads"));
 app.use("/assets", express.static("assets"));
 app.use("/convert", express.static("node_modules/@ffmpeg/core/dist"));
@@ -38,11 +41,7 @@ app.use((req, res, next) => {
     res.header("Cross-Origin-Embedder-Policy", "require-corp");
     res.header("Cross-Origin-Opener-Policy", "same-origin");
     res.header("Cross-Origin-Resource-Policy", "cross-origin");
-    res.header("Access-Control-Allow-Origin", "*");
     next();
 });
-app.use("/videos", videoRouter);
-app.use("/users", userRouter);
-app.use("/api", apiRouter);
 
 export default app;
