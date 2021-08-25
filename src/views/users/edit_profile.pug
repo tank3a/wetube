@@ -9,7 +9,7 @@ block content
             input(type="text", required, name="name", placeholder="Name", value=loggedInUser.name)
             input(type="text", name="location", placeholder="location", value=loggedInUser.location)
             if isHeroku
-                img(src=loggedInUser.avatarUrl, crossorigin, width="130px", height="180px")
+                img(src=loggedInUser.avatarUrl, width="130px", height="180px")
             else 
                 img(src=`/${loggedInUser.avatarUrl}`, crossorigin, width="130px", height="180px")
             label(for="avatar") Select your profile image 

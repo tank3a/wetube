@@ -24,9 +24,9 @@ header
                 if loggedIn
                     h4=loggedInUser.name
                     if isHeroku
-                        img(src=loggedInUser.avatarUrl, crossorigin)
+                        img(src=loggedInUser.avatarUrl)
                     else 
-                        img(src=`/${loggedInUser.avatarUrl}`, crossorigin)
+                        img(src=`/${loggedInUser.avatarUrl}`)
                     div.user_box__loggedInMenu
                         a(href=`/users/${loggedInUser._id}`)
                             h4 My Profile
