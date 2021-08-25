@@ -8,6 +8,7 @@ import userRouter from "./routers/userRouter";
 import rootRouter from "./routers/rootRouter";
 import { localsMiddleware } from "./middlewares";
 import apiRouter from "./routers/apiRouter";
+import cors from "cors";
 
 const app = express();
 const logger = morgan("dev");
@@ -38,11 +39,16 @@ app.use("/uploads", express.static("uploads"));
 app.use("/assets", express.static("assets"));
 app.use("/convert", express.static("node_modules/@ffmpeg/core/dist"));
 app.use((req, res, next) => {
-    req.header("Access-Control-Allow-Origin", "*");
     res.header("Cross-Origin-Embedder-Policy", "require-corp");
     res.header("Cross-Origin-Opener-Policy", "same-origin");
     res.header("Cross-Origin-Resource-Policy", "cross-origin");
     next();
 });
+app.use(
+    cors({
+        origin: "https://wetube-jongwon.s3.amazonaws.com",
+        methods: ['GET', 'POST', 'DELETE']
+    })
+)
 
 export default app;
