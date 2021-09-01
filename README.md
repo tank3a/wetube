@@ -5,4 +5,5 @@
 - You can upload and record your own video.
 - Search keywords, see your profile.
 
-![Main Page](tank3a/wetube/wetube-main.PNG)
+![wetube-main](https://user-images.githubusercontent.com/43626362/131595276-f8cf7617-fd46-4025-848f-5f69a5743859.PNG)
+
