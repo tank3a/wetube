@@ -1,16 +1,8 @@
-# Introduction of Youtube - Cloning
+# Youtube Cloning
 
-/ -> Recommended
-/join -> Join
-/login -> Login
-/search -> Search
+[Visit this Website](https://youtube-clone-jongwon.herokuapp.com/)
+- You can sign up, login by github.
+- You can upload and record your own video.
+- Search keywords, see your profile.
 
-/users/:id -> See User
-/users/edit -> Edit My Profile
-/users/delete -> Delete My Profile
-/users/logout -> Logout
-
-/videos/:id -> See video
-/videos/:id/edit -> Edit video
-/videos/:id/delete -> Delete video
-/videos/upload -> Upload Video
+![](wetube-main.PNG)
