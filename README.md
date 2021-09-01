@@ -5,4 +5,4 @@
 - You can upload and record your own video.
 - Search keywords, see your profile.
 
-![](wetube-main.PNG)
+![Main Page](wetube-main.PNG)
